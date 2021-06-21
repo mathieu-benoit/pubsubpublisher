@@ -18,6 +18,6 @@ spec:
         image: pubsubpublisher
         env:
         - name: DELAY_BETWEEN_MESSAGES
-          value: "1"
+          value: "1000"
         - name: NUMBER_OF_MESSAGES
-          value: "10"
+          value: "5"
