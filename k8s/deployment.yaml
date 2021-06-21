@@ -12,15 +12,15 @@ spec:
       labels:
         app: pubsubpublisher
     spec:
-      serviceAccountName: default
+      serviceAccountName: pubsubpublisher
       containers:
       - name: main
-        image: pubsubpublisher
+        image: gcr.io/pubsub-test-pull/pubsubpublisher
         env:
         - name: DELAY_BETWEEN_MESSAGES
           value: "1000"
         - name: PUBSUB_PROJECT_ID
-          value: "your-pubsub-project-id"
+          value: "pubsub-test-pull"
         - name: PUBSUB_TOPIC_ID
-          value: "your-pubsub-topic-id"
+          value: "projects/pubsub-test-pull/topics/streaming-pull"
         
