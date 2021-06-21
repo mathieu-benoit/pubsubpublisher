@@ -2,7 +2,7 @@
 
 ```
 docker build -t pubsubpublisher .
-docker run -it -e DELAY_BETWEEN_MESSAGES="1000" -e NUMBER_OF_MESSAGES="5" -e PUBSUB_PROJECT_ID="your-pubsub-project-id" -e PUBSUB_TOPIC_ID="your-pubsub-topic-id" pubsubpublisher
+docker run -it -e DELAY_BETWEEN_MESSAGES="1000" -e PUBSUB_PROJECT_ID="your-pubsub-project-id" -e PUBSUB_TOPIC_ID="your-pubsub-topic-id" pubsubpublisher
 ```
 
 ```
