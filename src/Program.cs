@@ -8,20 +8,19 @@ var projectId = Environment.GetEnvironmentVariable("PUBSUB_PROJECT_ID");
 var topicId = Environment.GetEnvironmentVariable("PUBSUB_TOPIC_ID");
 while (true)
 {
-    PublishMessagesAsync(projectId, topicId);
+    await PublishMessagesAsync(projectId, topicId);
     await Task.Delay(delay);
 }
 
-void PublishMessagesAsync(string projectId, string topicId)
+async Task PublishMessagesAsync(string projectId, string topicId)
 {
-    //var topicName = TopicName.FromProjectTopic(projectId, topicId);
-    //var publisher = await PublisherClient.CreateAsync(topicName);
+    var topicName = TopicName.FromProjectTopic(projectId, topicId);
+    var publisher = await PublisherClient.CreateAsync(topicName);
     var timeStamp = DateTime.Now;
     try
     {
-        //var message = await publisher.PublishAsync(timeStamp);
-        //Console.WriteLine($"Published message {message}");
-        Console.WriteLine(timeStamp);
+        var message = await publisher.PublishAsync(timeStamp.ToString());
+        Console.WriteLine($"Published message {message}");
     }
     catch (Exception exception)
     {
