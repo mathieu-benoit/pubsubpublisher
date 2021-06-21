@@ -21,3 +21,8 @@ spec:
           value: "1000"
         - name: NUMBER_OF_MESSAGES
           value: "5"
+        - name: PUBSUB_PROJECT_ID
+          value: "your-pubsub-project-id"
+        - name: PUBSUB_TOPIC_ID
+          value: "your-pubsub-topic-id"
+        
