@@ -6,7 +6,7 @@ docker build -t pubsubpublisher .
 docker run -it -e DELAY_BETWEEN_MESSAGES="1000" -e PUBSUB_PROJECT_ID="pubsub-test-pull" -e PUBSUB_TOPIC_ID="projects/pubsub-test-pull/topics/streaming-pull" pubsubpublisher
 ```
 
-Configure dedicated service account
+Configure dedicated service account:
 ```
 projectId=pubsub-test-pull
 namespace=pubsubpublisher
@@ -23,7 +23,9 @@ gcloud projects add-iam-policy-binding $projectId --member "serviceAccount:$gsaA
 
 Deploy on Kubernetes:
 ```
-kubectl apply -f k8s/deployment.yaml
+kubectl create ns pubsubpublisher
+kubectl apply -f k8s/serviceaccount.yaml -n pubsubpublisher
+kubectl apply -f k8s/deployment.yaml -n pubsubpublisher
 ```
 
 Other resources:
