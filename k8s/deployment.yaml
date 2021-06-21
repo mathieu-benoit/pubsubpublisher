@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pubsubpublisher
+spec:
+  selector:
+    matchLabels:
+      app: pubsubpublisher
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pubsubpublisher
+    spec:
+      serviceAccountName: default
+      containers:
+      - name: main
+        image: pubsubpublisher
+        env:
+        - name: DELAY_BETWEEN_MESSAGES
+          value: "1"
+        - name: NUMBER_OF_MESSAGES
+          value: "10"
