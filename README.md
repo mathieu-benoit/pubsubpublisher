@@ -11,8 +11,9 @@ Configure dedicated service account:
 projectId=pubsub-test-pull
 namespace=pubsubpublisher
 ksaName=pubsubpublisher
-gsaName=$projectId-$ksaName
+gsaName=pubsubpublisher
 gsaAccountName=$gsaName@$projectId.iam.gserviceaccount.com
+gcloud config set project $projectId
 gcloud iam service-accounts create $gsaName
 gcloud iam service-accounts add-iam-policy-binding \
     --role roles/iam.workloadIdentityUser \
