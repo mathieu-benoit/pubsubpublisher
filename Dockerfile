@@ -10,7 +10,7 @@ FROM build AS publish
 WORKDIR /app/src
 # Fix the issue on Debian 10: https://github.com/dotnet/dotnet-docker/issues/2470
 ENV COMPlus_EnableDiagnostics=0
-RUN dotnet publish pubsubpublisher.csproj -r linux-musl-x64 --self-contained true -c release -o out --no-restore
+RUN dotnet publish pubsubpublisher.csproj -r linux-musl-x64 --self-contained true -p:PublishTrimmed=True -p:TrimMode=Link -c release -o out --no-restore
 
 
 # https://mcr.microsoft.com/v2/dotnet/runtime-deps/tags/list
