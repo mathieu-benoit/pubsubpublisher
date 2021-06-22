@@ -6,21 +6,39 @@ docker build -t pubsubpublisher .
 docker run -it -e DELAY_BETWEEN_MESSAGES="1000" -e PUBSUB_PROJECT_ID="pubsub-test-pull" -e PUBSUB_TOPIC_ID="projects/pubsub-test-pull/topics/streaming-pull" pubsubpublisher
 ```
 
-Configure dedicated service account:
 ```
 projectId=pubsub-test-pull
+gcloud config set project $projectId
+
+gcloud pubsub topics create streaming-pull-1ms-1r
+gcloud pubsub topics create streaming-pull-1ms-2r
+gcloud pubsub topics create streaming-pull-1s-1r
+gcloud pubsub topics create streaming-pull-1s-2r
+gcloud pubsub topics create streaming-pull-1m-1r
+gcloud pubsub topics create streaming-pull-1m-2r
+gcloud pubsub topics create streaming-pull-1h-1r
+gcloud pubsub topics create streaming-pull-1h-2r
+```
+
+Configure dedicated service account:
+```
 namespace=pubsubpublisher
 ksaName=pubsubpublisher
 gsaName=pubsubpublisher
 gsaAccountName=$gsaName@$projectId.iam.gserviceaccount.com
-gcloud config set project $projectId
 gcloud iam service-accounts create $gsaName
 gcloud iam service-accounts add-iam-policy-binding \
     --role roles/iam.workloadIdentityUser \
     --member "serviceAccount:$projectId.svc.id.goog[$namespace/$ksaName]" \
     $gsaAccountName
-topicName=streaming-pull
-gcloud pubsub topics add-iam-policy-binding $topicName --member "serviceAccount:$gsaAccountName" --role "roles/pubsub.publisher"
+gcloud pubsub topics add-iam-policy-binding streaming-pull-1ms-1r --member "serviceAccount:$gsaAccountName" --role "roles/pubsub.publisher"
+gcloud pubsub topics add-iam-policy-binding streaming-pull-1ms-2r --member "serviceAccount:$gsaAccountName" --role "roles/pubsub.publisher"
+gcloud pubsub topics add-iam-policy-binding streaming-pull-1s-1r --member "serviceAccount:$gsaAccountName" --role "roles/pubsub.publisher"
+gcloud pubsub topics add-iam-policy-binding streaming-pull-1s-2r --member "serviceAccount:$gsaAccountName" --role "roles/pubsub.publisher"
+gcloud pubsub topics add-iam-policy-binding streaming-pull-1m-1r --member "serviceAccount:$gsaAccountName" --role "roles/pubsub.publisher"
+gcloud pubsub topics add-iam-policy-binding streaming-pull-1m-2r --member "serviceAccount:$gsaAccountName" --role "roles/pubsub.publisher"
+gcloud pubsub topics add-iam-policy-binding streaming-pull-1h-1r --member "serviceAccount:$gsaAccountName" --role "roles/pubsub.publisher"
+gcloud pubsub topics add-iam-policy-binding streaming-pull-1h-2r --member "serviceAccount:$gsaAccountName" --role "roles/pubsub.publisher"
 ```
 
 Deploy on Kubernetes:
