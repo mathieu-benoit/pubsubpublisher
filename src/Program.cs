@@ -16,7 +16,7 @@ while (true)
 
 void PublishMessagesAsync(string topicId)
 {
-    var runId = DateTime.UtcNow.ToString("yyyyMMddTHHmmss", CultureInfo.InvariantCulture);
+    var runId = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fff", CultureInfo.InvariantCulture);
     Console.Write(runId);
     var publisher = PublisherServiceApiClient.Create();
     var message = new PubsubMessage {Data = ByteString.CopyFromUtf8(runId)};
