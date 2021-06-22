@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Google.Cloud.PubSub.V1;
 using Google.Protobuf;
-using System.Linq;
 
 var delay = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("DELAY_BETWEEN_MESSAGES")) ? Int32.Parse(Environment.GetEnvironmentVariable("DELAY_BETWEEN_MESSAGES")) : 0;
 var topicId = Environment.GetEnvironmentVariable("PUBSUB_TOPIC_ID");
