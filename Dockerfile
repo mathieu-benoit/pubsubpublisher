@@ -1,5 +1,5 @@
 # https://mcr.microsoft.com/v2/dotnet/sdk/tags/list
-FROM mcr.microsoft.com/dotnet/sdk:5.0.203 AS build
+FROM mcr.microsoft.com/dotnet/sdk:5.0.301 AS build
 WORKDIR /app
 COPY src/pubsubpublisher.csproj ./src/
 WORKDIR /app/src
