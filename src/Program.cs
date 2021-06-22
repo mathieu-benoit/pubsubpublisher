@@ -1,32 +1,26 @@
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Google.Cloud.PubSub.V1;
+using Google.Protobuf;
+using System.Linq;
 
 var delay = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("DELAY_BETWEEN_MESSAGES")) ? Int32.Parse(Environment.GetEnvironmentVariable("DELAY_BETWEEN_MESSAGES")) : 0;
-var projectId = Environment.GetEnvironmentVariable("PUBSUB_PROJECT_ID");
 var topicId = Environment.GetEnvironmentVariable("PUBSUB_TOPIC_ID");
 while (true)
 {
-    Console.WriteLine("Test");
-    await PublishMessagesAsync(projectId, topicId);
+    PublishMessagesAsync(topicId);
     await Task.Delay(delay);
 }
 
-async Task PublishMessagesAsync(string projectId, string topicId)
+void PublishMessagesAsync(string topicId)
 {
-    var topicName = TopicName.FromProjectTopic(projectId, topicId);
-    Console.WriteLine(projectId);
-    Console.WriteLine(topicId);
-    var publisher = await PublisherClient.CreateAsync(topicName);
-    var timeStamp = DateTime.Now;
-    try
-    {
-        var message = await publisher.PublishAsync(timeStamp.ToString());
-        Console.WriteLine($"Published message {message}");
-    }
-    catch (Exception exception)
-    {
-        Console.WriteLine($"An error ocurred when publishing message {timeStamp}: {exception.Message}");
-    }
+    var runId = DateTime.UtcNow.ToString("yyyyMMddTHHmmss", CultureInfo.InvariantCulture);
+    Console.Write(runId);
+    var publisher = PublisherServiceApiClient.Create();
+    var message = new PubsubMessage {Data = ByteString.CopyFromUtf8(runId)};
+    var response = publisher.Publish(topicId, new[] { message });
+    Console.WriteLine($" --> {response.MessageIds[0]}");
 }

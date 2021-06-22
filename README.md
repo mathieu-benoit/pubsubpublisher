@@ -31,5 +31,6 @@ kubectl apply -f k8s/deployment.yaml -n pubsubpublisher
 ```
 
 Other resources:
+- [Google.Cloud.PubSub.V1 doc](https://googleapis.github.io/google-cloud-dotnet/docs/Google.Cloud.PubSub.V1/)
 - [.NET Core samples with PubSub](https://github.com/GoogleCloudPlatform/dotnet-docs-samples/tree/master/pubsub/api/Pubsub.Samples)
 - [PubSub load test framework](https://github.com/GoogleCloudPlatform/pubsub/tree/master/load-test-framework/)
