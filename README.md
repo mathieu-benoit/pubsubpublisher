@@ -3,7 +3,11 @@
 Run with Docker:
 ```
 docker build -t pubsubpublisher .
-docker run -it -e DELAY_BETWEEN_MESSAGES="1000" -e PUBSUB_PROJECT_ID="pubsub-test-pull" -e PUBSUB_TOPIC_ID="projects/pubsub-test-pull/topics/streaming-pull" pubsubpublisher
+docker run -it \
+    -e DELAY_BETWEEN_MESSAGES="1000" \
+    -e PUBSUB_PROJECT_ID="pubsub-test-pull" \
+    -e PUBSUB_TOPIC_ID="projects/pubsub-test-pull/topics/streaming-pull" \
+    pubsubpublisher
 ```
 
 ```

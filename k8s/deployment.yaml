@@ -15,7 +15,7 @@ spec:
       serviceAccountName: pubsubpublisher
       containers:
       - name: main
-        image: gcr.io/pubsub-test-pull/pubsubpublisher:v33
+        image: gcr.io/pubsub-test-pull/pubsubpublisher:v34
         env:
         - name: DELAY_BETWEEN_MESSAGES
           value: "1000"
@@ -25,4 +25,5 @@ spec:
           value: "projects/pubsub-test-pull/topics/streaming-pull"
         - name: NUMBER_OF_PULLER_REPLICAS
           value: "1"
-        
+        - name: PUBSUB_TOPIC_KIND
+          value: "classic"
