@@ -10,11 +10,13 @@ FROM build AS publish
 WORKDIR /app/src
 # Fix the issue on Debian 10: https://github.com/dotnet/dotnet-docker/issues/2470
 ENV COMPlus_EnableDiagnostics=0
-RUN dotnet publish pubsubpublisher.csproj -p:PublishSingleFile=true -r linux-musl-x64 --self-contained true -p:PublishTrimmed=True -p:TrimMode=Link -c release -o out --no-restore
+RUN dotnet publish pubsubpublisher.csproj -r linux-musl-x64 --self-contained true -c release -o out --no-restore
 
 
 # https://mcr.microsoft.com/v2/dotnet/runtime-deps/tags/list
 FROM mcr.microsoft.com/dotnet/runtime-deps:5.0.6-alpine3.13-amd64
+# gRPC issue: https://github.com/grpc/grpc/issues/21446
+RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.8/main' >> /etc/apk/repositories && apk update --no-cache && apk add --no-cache bash libc6-compat=1.1.19-r11
 WORKDIR /app
 COPY --from=publish /app/src/out ./
 EXPOSE 7070

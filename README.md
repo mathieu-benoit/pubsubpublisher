@@ -19,7 +19,8 @@ gcloud iam service-accounts add-iam-policy-binding \
     --role roles/iam.workloadIdentityUser \
     --member "serviceAccount:$projectId.svc.id.goog[$namespace/$ksaName]" \
     $gsaAccountName
-gcloud projects add-iam-policy-binding $projectId --member "serviceAccount:$gsaAccountName" --role "roles/pubsub.publisher"
+topicName=streaming-pull
+gcloud pubsub topics add-iam-policy-binding $topicName --member "serviceAccount:$gsaAccountName" --role "roles/pubsub.publisher"
 ```
 
 Deploy on Kubernetes:

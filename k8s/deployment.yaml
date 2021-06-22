@@ -15,7 +15,7 @@ spec:
       serviceAccountName: pubsubpublisher
       containers:
       - name: main
-        image: gcr.io/pubsub-test-pull/pubsubpublisher:v3
+        image: gcr.io/pubsub-test-pull/pubsubpublisher:v16
         env:
         - name: DELAY_BETWEEN_MESSAGES
           value: "1000"

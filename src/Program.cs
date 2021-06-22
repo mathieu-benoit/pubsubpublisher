@@ -8,6 +8,7 @@ var projectId = Environment.GetEnvironmentVariable("PUBSUB_PROJECT_ID");
 var topicId = Environment.GetEnvironmentVariable("PUBSUB_TOPIC_ID");
 while (true)
 {
+    Console.WriteLine("Test");
     await PublishMessagesAsync(projectId, topicId);
     await Task.Delay(delay);
 }
@@ -15,6 +16,8 @@ while (true)
 async Task PublishMessagesAsync(string projectId, string topicId)
 {
     var topicName = TopicName.FromProjectTopic(projectId, topicId);
+    Console.WriteLine(projectId);
+    Console.WriteLine(topicId);
     var publisher = await PublisherClient.CreateAsync(topicName);
     var timeStamp = DateTime.Now;
     try
