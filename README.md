@@ -16,12 +16,16 @@ gcloud config set project $projectId
 
 gcloud pubsub topics create streaming-pull-1ms-1r
 gcloud pubsub topics create streaming-pull-1ms-2r
+gcloud pubsub topics create streaming-pull-1ms-5r
 gcloud pubsub topics create streaming-pull-1s-1r
 gcloud pubsub topics create streaming-pull-1s-2r
+gcloud pubsub topics create streaming-pull-1s-5r
 gcloud pubsub topics create streaming-pull-1m-1r
 gcloud pubsub topics create streaming-pull-1m-2r
+gcloud pubsub topics create streaming-pull-1m-5r
 gcloud pubsub topics create streaming-pull-1h-1r
 gcloud pubsub topics create streaming-pull-1h-2r
+gcloud pubsub topics create streaming-pull-1h-5r
 ```
 
 Configure dedicated service account:
