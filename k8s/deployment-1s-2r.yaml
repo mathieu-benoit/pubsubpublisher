@@ -18,7 +18,7 @@ spec:
         image: gcr.io/pubsub-test-pull/pubsubpublisher:v34
         env:
         - name: DELAY_BETWEEN_MESSAGES
-          value: "60"
+          value: "1000"
         - name: PUBSUB_PROJECT_ID
           value: "pubsub-test-pull"
         - name: PUBSUB_TOPIC_ID
