@@ -20,12 +20,15 @@ while (true)
 
 void PublishMessagesAsync(string topicId)
 {
-    var runId = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fff", CultureInfo.InvariantCulture);
-    Console.Write(runId);
     var publisher = PublisherServiceApiClient.Create();
+    var startTime = DateTime.UtcNow;
+    var runId = startTime.ToString("yyyy-MM-ddTHH:mm:ss.fff", CultureInfo.InvariantCulture);
+    Console.Write(runId);
     var messagePayload = new MessagePayload { Timestamp = runId, Frequency = delay, Replicas = numberOfPullerReplicas, Kind = kind };
     var message = new PubsubMessage { Data = ByteString.CopyFromUtf8(JsonSerializer.Serialize(messagePayload)) };
     var response = publisher.Publish(topicId, new[] { message });
+    var endTime = DateTime.UtcNow;
+    Console.Write($" - {endTime.Subtract(startTime).Milliseconds}");
     Console.WriteLine($" --> {response.MessageIds[0]}");
 }
 
