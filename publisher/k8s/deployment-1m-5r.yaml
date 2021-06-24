@@ -15,7 +15,7 @@ spec:
       serviceAccountName: publisher
       containers:
       - name: main
-        image: gcr.io/pubsub-test-pull/publisher:v36
+        image: gcr.io/pubsub-test-pull/publisher:v37
         env:
         - name: DELAY_BETWEEN_MESSAGES
           value: "60000"

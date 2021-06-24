@@ -31,7 +31,7 @@ gcloud pubsub topics create streaming-pull-1h-5r
 Configure dedicated service account:
 ```
 namespace=pubsubpublisher
-ksaName=pubsubpublisher
+ksaName=publisher
 gsaName=pubsubpublisher
 gsaAccountName=$gsaName@$projectId.iam.gserviceaccount.com
 gcloud iam service-accounts create $gsaName
@@ -51,9 +51,9 @@ gcloud pubsub topics add-iam-policy-binding streaming-pull-1h-2r --member "servi
 
 Deploy on Kubernetes:
 ```
-kubectl create ns pubsubpublisher
-kubectl apply -f k8s/serviceaccount.yaml -n pubsubpublisher
-kubectl apply -f k8s/deployment.yaml -n pubsubpublisher
+kubectl create ns $namespace
+kubectl apply -f k8s/serviceaccount.yaml -n $namespace
+kubectl apply -f k8s/deployment.yaml -n $namespace
 ```
 
 Other resources:
