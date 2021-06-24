@@ -6,10 +6,18 @@
 version: 2
 updates:
   - package-ecosystem: "docker"
-    directory: "/"
+    directory: "/publisher/src/"
     schedule:
       interval: "daily"
   - package-ecosystem: "nuget"
-    directory: "/src/"
+    directory: "/publisher/src/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "docker"
+    directory: "/pushee/src/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "nuget"
+    directory: "/pushee/src/"
     schedule:
       interval: "daily"

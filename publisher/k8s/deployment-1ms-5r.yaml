@@ -1,29 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pubsubpublisher-1s-1r
+  name: publisher-1ms-5r
 spec:
   selector:
     matchLabels:
-      app: pubsubpublisher-1s-1r
+      app: publisher-1ms-5r
   replicas: 1
   template:
     metadata:
       labels:
-        app: pubsubpublisher-1s-1r
+        app: publisher-1ms-5r
     spec:
-      serviceAccountName: pubsubpublisher
+      serviceAccountName: publisher
       containers:
       - name: main
-        image: gcr.io/pubsub-test-pull/pubsubpublisher:v36
+        image: gcr.io/pubsub-test-pull/publisher:v36
         env:
         - name: DELAY_BETWEEN_MESSAGES
-          value: "1000"
+          value: "1"
         - name: PUBSUB_PROJECT_ID
           value: "pubsub-test-pull"
         - name: PUBSUB_TOPIC_ID
-          value: "projects/pubsub-test-pull/topics/streaming-pull-1s-1r"
+          value: "projects/pubsub-test-pull/topics/streaming-pull-1ms-5r"
         - name: NUMBER_OF_PULLER_REPLICAS
-          value: "1"
+          value: "5"
         - name: PUBSUB_TOPIC_KIND
           value: "classic"
