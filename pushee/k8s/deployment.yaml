@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pushee
+spec:
+  selector:
+    matchLabels:
+      app: pushee
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pushee
+    spec:
+      serviceAccountName: default
+      containers:
+      - name: main
+        image: gcr.io/pubsub-test-pull/pushee:v1
+        ports:
+        - containerPort: 7070
+        env:
+        - name: TEXT
+          value: "Monde"
