@@ -5,6 +5,7 @@ steps:
       - '-Dmaven.test.skip=true'
     id: Build
     entrypoint: mvn
+    dir: 'puller/src'
   - name: gcr.io/cloud-builders/docker
     args:
       - build
@@ -13,5 +14,6 @@ steps:
       - '--build-arg=JAR_FILE=target/puller-1.0-SNAPSHOT.jar'
       - .
     id: Dockerize
+    dir: 'puller/src'
 images:
   - gcr.io/pubsub-test-pull/pubsub-puller:$SHORT_SHA
