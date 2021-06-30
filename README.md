@@ -44,3 +44,6 @@ gcloud pubsub topics add-iam-policy-binding streaming-pull-1m-2r --member "servi
 gcloud pubsub topics add-iam-policy-binding streaming-pull-1h-1r --member "serviceAccount:$gsaAccountName" --role "roles/pubsub.publisher"
 gcloud pubsub topics add-iam-policy-binding streaming-pull-1h-2r --member "serviceAccount:$gsaAccountName" --role "roles/pubsub.publisher"
 ```
+
+Resources:
+- [Choosing Pub Sub or Pub Sub Lite?](https://youtu.be/fgVE1OoJ2XI)
