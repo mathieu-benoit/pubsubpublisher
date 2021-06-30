@@ -21,3 +21,11 @@ updates:
     directory: "/pushee/src/"
     schedule:
       interval: "daily"
+  - package-ecosystem: "docker"
+    directory: "/puller/src/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "maven"
+    directory: "/puller/src/"
+    schedule:
+      interval: "daily"

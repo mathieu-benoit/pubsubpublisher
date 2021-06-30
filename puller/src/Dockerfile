@@ -1,4 +1,9 @@
+FROM maven:3.6.3-jdk-14 AS build
+COPY src /usr/src/app/src  
+COPY pom.xml /usr/src/app
+WORKDIR /usr/src/app
+RUN mvn package -Dmaven.test.skip=true
+
 FROM openjdk:11-jdk-oracle
-ARG JAR_FILE=_JAR_NAME
-COPY ${JAR_FILE} pubsubpuller.jar
-ENTRYPOINT ["java", "-Djava.security.edg=file:/dev/./urandom","-jar","/pubsubpuller.jar"]
+COPY --from=build /usr/src/app/target/puller-1.0-SNAPSHOT.jar puller.jar
+ENTRYPOINT ["java", "-Djava.security.edg=file:/dev/./urandom","-jar","/puller.jar"]
