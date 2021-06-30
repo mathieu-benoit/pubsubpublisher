@@ -1,6 +1,6 @@
 {
   "displayName": "99th percentile / 1s",
-  "etag": "e90a0f8bc89a52ab504e1673a1ba5299",
+  "etag": "9997746bccde59aafa9f22bf61499f64",
   "mosaicLayout": {
     "columns": 12,
     "tiles": [
@@ -249,7 +249,7 @@
           }
         },
         "width": 6,
-        "yPos": 12
+        "yPos": 16
       },
       {
         "height": 4,
@@ -270,6 +270,46 @@
                       "perSeriesAligner": "ALIGN_MEAN"
                     },
                     "filter": "metric.type=\"kubernetes.io/container/uptime\" resource.type=\"k8s_container\" metadata.user_labels.\"app\"=starts_with(\"publisher-1s-\")"
+                  }
+                }
+              }
+            ],
+            "timeshiftDuration": "0s",
+            "yAxis": {
+              "label": "y1Axis",
+              "scale": "LINEAR"
+            }
+          }
+        },
+        "width": 6,
+        "yPos": 12
+      },
+      {
+        "height": 4,
+        "widget": {
+          "title": "Pull Standard Deviation",
+          "xyChart": {
+            "chartOptions": {
+              "mode": "COLOR"
+            },
+            "dataSets": [
+              {
+                "minAlignmentPeriod": "60s",
+                "plotType": "LINE",
+                "timeSeriesQuery": {
+                  "timeSeriesFilter": {
+                    "aggregation": {
+                      "alignmentPeriod": "60s",
+                      "crossSeriesReducer": "REDUCE_STDDEV",
+                      "groupByFields": [
+                        "metadata.user_labels.\"scenario\""
+                      ],
+                      "perSeriesAligner": "ALIGN_DELTA"
+                    },
+                    "filter": "metric.type=\"logging.googleapis.com/user/Container-Pull-latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=starts_with(\"classic-1s-\")",
+                    "secondaryAggregation": {
+                      "alignmentPeriod": "60s"
+                    }
                   }
                 }
               }
