@@ -1,14 +1,10 @@
-.NET Core app to publish messages on PubSub, leveraging [this sample code](https://cloud.google.com/pubsub/docs/publisher#c).
+Repo to centralize code for apps and infra to reproduce benchmark tests with PubSub to measure latency. The tests consists on 2 main roles in PubSub:
+1. Publisher, to send messages to a specific topic per scenario: every 1ms, 1s, 1m or 1h.
+2. Puller, to pull message from a specific topic's subscription per scenario.
 
-Run with Docker:
-```
-docker build -t pubsubpublisher .
-docker run -it \
-    -e DELAY_BETWEEN_MESSAGES="1000" \
-    -e PUBSUB_PROJECT_ID="pubsub-test-pull" \
-    -e PUBSUB_TOPIC_ID="projects/pubsub-test-pull/topics/streaming-pull" \
-    pubsubpublisher
-```
+FIXME:
+- 1 README per app to build and deploy it
+- 1 README for the infra with the `gcloud` commands to provision GKE, PubSub topics/subscriptions, custom Logs-based metrics, etc.
 
 ```
 projectId=pubsub-test-pull
@@ -48,15 +44,3 @@ gcloud pubsub topics add-iam-policy-binding streaming-pull-1m-2r --member "servi
 gcloud pubsub topics add-iam-policy-binding streaming-pull-1h-1r --member "serviceAccount:$gsaAccountName" --role "roles/pubsub.publisher"
 gcloud pubsub topics add-iam-policy-binding streaming-pull-1h-2r --member "serviceAccount:$gsaAccountName" --role "roles/pubsub.publisher"
 ```
-
-Deploy on Kubernetes:
-```
-kubectl create ns $namespace
-kubectl apply -f k8s/serviceaccount.yaml -n $namespace
-kubectl apply -f k8s/deployment.yaml -n $namespace
-```
-
-Other resources:
-- [Google.Cloud.PubSub.V1 doc](https://googleapis.github.io/google-cloud-dotnet/docs/Google.Cloud.PubSub.V1/)
-- [.NET Core samples with PubSub](https://github.com/GoogleCloudPlatform/dotnet-docs-samples/tree/master/pubsub/api/Pubsub.Samples)
-- [PubSub load test framework](https://github.com/GoogleCloudPlatform/pubsub/tree/master/load-test-framework/)
