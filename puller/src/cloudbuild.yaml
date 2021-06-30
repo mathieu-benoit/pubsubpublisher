@@ -1,0 +1,17 @@
+steps:
+  - name: 'maven:3-jdk-11'
+    args:
+      - package
+      - '-Dmaven.test.skip=true'
+    id: Build
+    entrypoint: mvn
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - '-t'
+      - gcr.io/pubsub-test-pull/pubsub-puller:$SHORT_SHA
+      - '--build-arg=JAR_FILE=target/puller-1.0-SNAPSHOT.jar'
+      - .
+    id: Dockerize
+images:
+  - gcr.io/pubsub-test-pull/pubsub-puller:$SHORT_SHA
