@@ -1,290 +1,290 @@
 {
-    "displayName": "95th percentile / 1s",
-    "etag": "a81fb9f09bd990732105bce4b5f506d4",
-    "mosaicLayout": {
-      "columns": 12,
-      "tiles": [
-        {
-          "height": 4,
-          "widget": {
-            "title": "Pull",
-            "xyChart": {
-              "chartOptions": {
-                "mode": "COLOR"
-              },
-              "dataSets": [
-                {
-                  "minAlignmentPeriod": "60s",
-                  "plotType": "LINE",
-                  "timeSeriesQuery": {
-                    "timeSeriesFilter": {
-                      "aggregation": {
-                        "alignmentPeriod": "60s",
-                        "crossSeriesReducer": "REDUCE_PERCENTILE_95",
-                        "groupByFields": [
-                          "metadata.user_labels.\"scenario\""
-                        ],
-                        "perSeriesAligner": "ALIGN_DELTA"
-                      },
-                      "filter": "metric.type=\"logging.googleapis.com/user/Container-Pull-latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=starts_with(\"classic-1s-\")"
-                    }
-                  }
-                }
-              ],
-              "timeshiftDuration": "0s",
-              "yAxis": {
-                "label": "y1Axis",
-                "scale": "LINEAR"
-              }
-            }
-          },
-          "width": 6
-        },
-        {
-          "height": 4,
-          "widget": {
-            "title": "Publish",
-            "xyChart": {
-              "chartOptions": {
-                "mode": "COLOR"
-              },
-              "dataSets": [
-                {
-                  "minAlignmentPeriod": "60s",
-                  "plotType": "LINE",
-                  "timeSeriesQuery": {
-                    "timeSeriesFilter": {
-                      "aggregation": {
-                        "alignmentPeriod": "60s",
-                        "crossSeriesReducer": "REDUCE_PERCENTILE_95",
-                        "groupByFields": [
-                          "resource.label.\"namespace_name\""
-                        ],
-                        "perSeriesAligner": "ALIGN_DELTA"
-                      },
-                      "filter": "metric.type=\"logging.googleapis.com/user/PubSub-Publish-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=starts_with(\"classic-1s-\")"
-                    }
-                  }
-                }
-              ],
-              "timeshiftDuration": "0s",
-              "yAxis": {
-                "label": "y1Axis",
-                "scale": "LINEAR"
-              }
-            }
-          },
-          "width": 6,
-          "yPos": 4
-        },
-        {
-          "height": 4,
-          "widget": {
-            "scorecard": {
-              "sparkChartView": {
-                "sparkChartType": "SPARK_BAR"
-              },
-              "timeSeriesQuery": {
-                "timeSeriesFilter": {
-                  "aggregation": {
-                    "alignmentPeriod": "60s",
-                    "crossSeriesReducer": "REDUCE_PERCENTILE_95",
-                    "perSeriesAligner": "ALIGN_DELTA"
-                  },
-                  "filter": "metric.type=\"logging.googleapis.com/user/Container-Pull-latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"classic-1s-1r\""
-                }
-              }
-            },
-            "title": "Pull - 1r"
-          },
-          "width": 2,
-          "xPos": 6
-        },
-        {
-          "height": 4,
-          "widget": {
-            "scorecard": {
-              "sparkChartView": {
-                "sparkChartType": "SPARK_BAR"
-              },
-              "timeSeriesQuery": {
-                "timeSeriesFilter": {
-                  "aggregation": {
-                    "alignmentPeriod": "60s",
-                    "crossSeriesReducer": "REDUCE_PERCENTILE_95",
-                    "perSeriesAligner": "ALIGN_DELTA"
-                  },
-                  "filter": "metric.type=\"logging.googleapis.com/user/Container-Pull-latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"classic-1s-2r\""
-                }
-              }
-            },
-            "title": "Pull - 2r"
-          },
-          "width": 2,
-          "xPos": 8
-        },
-        {
-          "height": 4,
-          "widget": {
-            "scorecard": {
-              "sparkChartView": {
-                "sparkChartType": "SPARK_BAR"
-              },
-              "timeSeriesQuery": {
-                "timeSeriesFilter": {
-                  "aggregation": {
-                    "alignmentPeriod": "60s",
-                    "crossSeriesReducer": "REDUCE_PERCENTILE_95",
-                    "perSeriesAligner": "ALIGN_DELTA"
-                  },
-                  "filter": "metric.type=\"logging.googleapis.com/user/Container-Pull-latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"classic-1s-5r\""
-                }
-              }
-            },
-            "title": "Pull - 5r"
-          },
-          "width": 2,
-          "xPos": 10
-        },
-        {
-          "height": 4,
-          "widget": {
-            "scorecard": {
-              "sparkChartView": {
-                "sparkChartType": "SPARK_BAR"
-              },
-              "timeSeriesQuery": {
-                "timeSeriesFilter": {
-                  "aggregation": {
-                    "alignmentPeriod": "60s",
-                    "crossSeriesReducer": "REDUCE_PERCENTILE_95",
-                    "perSeriesAligner": "ALIGN_DELTA"
-                  },
-                  "filter": "metric.type=\"logging.googleapis.com/user/PubSub-Publish-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"classic-1s-1r\""
-                }
-              }
-            },
-            "title": "Publish - 1r"
-          },
-          "width": 2,
-          "xPos": 6,
-          "yPos": 4
-        },
-        {
-          "height": 4,
-          "widget": {
-            "scorecard": {
-              "sparkChartView": {
-                "sparkChartType": "SPARK_BAR"
-              },
-              "timeSeriesQuery": {
-                "timeSeriesFilter": {
-                  "aggregation": {
-                    "alignmentPeriod": "60s",
-                    "crossSeriesReducer": "REDUCE_PERCENTILE_95",
-                    "perSeriesAligner": "ALIGN_DELTA"
-                  },
-                  "filter": "metric.type=\"logging.googleapis.com/user/PubSub-Publish-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"classic-1s-2r\""
-                }
-              }
-            },
-            "title": "Publish - 2r"
-          },
-          "width": 2,
-          "xPos": 8,
-          "yPos": 4
-        },
-        {
-          "height": 4,
-          "widget": {
-            "scorecard": {
-              "sparkChartView": {
-                "sparkChartType": "SPARK_BAR"
-              },
-              "timeSeriesQuery": {
-                "timeSeriesFilter": {
-                  "aggregation": {
-                    "alignmentPeriod": "60s",
-                    "crossSeriesReducer": "REDUCE_PERCENTILE_95",
-                    "perSeriesAligner": "ALIGN_DELTA"
-                  },
-                  "filter": "metric.type=\"logging.googleapis.com/user/PubSub-Publish-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"classic-1s-5r\""
-                }
-              }
-            },
-            "title": "Publish - 5r"
-          },
-          "width": 2,
-          "xPos": 10,
-          "yPos": 4
-        },
-        {
-          "height": 4,
-          "widget": {
-            "title": "Puller Container Uptime",
-            "xyChart": {
-              "chartOptions": {
-                "mode": "COLOR"
-              },
-              "dataSets": [
-                {
-                  "minAlignmentPeriod": "60s",
-                  "plotType": "LINE",
-                  "timeSeriesQuery": {
-                    "timeSeriesFilter": {
-                      "aggregation": {
-                        "alignmentPeriod": "60s",
-                        "perSeriesAligner": "ALIGN_MEAN"
-                      },
-                      "filter": "metric.type=\"kubernetes.io/container/uptime\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=starts_with(\"classic-1s-\")"
-                    }
-                  }
-                }
-              ],
-              "timeshiftDuration": "0s",
-              "yAxis": {
-                "label": "y1Axis",
-                "scale": "LINEAR"
-              }
-            }
-          },
-          "width": 6,
-          "yPos": 12
-        },
-        {
-          "height": 4,
-          "widget": {
-            "title": "Publisher Container Uptime",
-            "xyChart": {
-              "chartOptions": {
-                "mode": "COLOR"
-              },
-              "dataSets": [
-                {
-                  "minAlignmentPeriod": "60s",
-                  "plotType": "LINE",
-                  "timeSeriesQuery": {
-                    "timeSeriesFilter": {
-                      "aggregation": {
-                        "alignmentPeriod": "60s",
-                        "perSeriesAligner": "ALIGN_MEAN"
-                      },
-                      "filter": "metric.type=\"kubernetes.io/container/uptime\" resource.type=\"k8s_container\" metadata.user_labels.\"app\"=starts_with(\"publisher-1s-\")"
-                    }
-                  }
-                }
-              ],
-              "timeshiftDuration": "0s",
-              "yAxis": {
-                "label": "y1Axis",
-                "scale": "LINEAR"
-              }
-            }
-          },
-          "width": 6,
-          "yPos": 8
-        }
-      ]
-    },
-    "name": "projects/437768889353/dashboards/2a75ae7a-6bfe-4158-8251-6ba00e3fcf51"
-  }
+	"displayName": "95th percentile / 1s",
+	"etag": "a81fb9f09bd990732105bce4b5f506d4",
+	"mosaicLayout": {
+			"columns": 12,
+			"tiles": [
+			{
+					"height": 4,
+					"widget": {
+					"title": "Pull",
+					"xyChart": {
+							"chartOptions": {
+							"mode": "COLOR"
+							},
+							"dataSets": [
+							{
+									"minAlignmentPeriod": "60s",
+									"plotType": "LINE",
+									"timeSeriesQuery": {
+									"timeSeriesFilter": {
+											"aggregation": {
+											"alignmentPeriod": "60s",
+											"crossSeriesReducer": "REDUCE_PERCENTILE_95",
+											"groupByFields": [
+													"metadata.user_labels.\"scenario\""
+											],
+											"perSeriesAligner": "ALIGN_DELTA"
+											},
+											"filter": "metric.type=\"logging.googleapis.com/user/Container-Pull-latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=starts_with(\"classic-1s-\")"
+									}
+									}
+							}
+							],
+							"timeshiftDuration": "0s",
+							"yAxis": {
+							"label": "y1Axis",
+							"scale": "LINEAR"
+							}
+					}
+					},
+					"width": 6
+			},
+			{
+					"height": 4,
+					"widget": {
+					"title": "Publish",
+					"xyChart": {
+							"chartOptions": {
+							"mode": "COLOR"
+							},
+							"dataSets": [
+							{
+									"minAlignmentPeriod": "60s",
+									"plotType": "LINE",
+									"timeSeriesQuery": {
+									"timeSeriesFilter": {
+											"aggregation": {
+											"alignmentPeriod": "60s",
+											"crossSeriesReducer": "REDUCE_PERCENTILE_95",
+											"groupByFields": [
+													"resource.label.\"namespace_name\""
+											],
+											"perSeriesAligner": "ALIGN_DELTA"
+											},
+											"filter": "metric.type=\"logging.googleapis.com/user/PubSub-Publish-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=starts_with(\"classic-1s-\")"
+									}
+									}
+							}
+							],
+							"timeshiftDuration": "0s",
+							"yAxis": {
+							"label": "y1Axis",
+							"scale": "LINEAR"
+							}
+					}
+					},
+					"width": 6,
+					"yPos": 4
+			},
+			{
+					"height": 4,
+					"widget": {
+					"scorecard": {
+							"sparkChartView": {
+							"sparkChartType": "SPARK_BAR"
+							},
+							"timeSeriesQuery": {
+							"timeSeriesFilter": {
+									"aggregation": {
+									"alignmentPeriod": "60s",
+									"crossSeriesReducer": "REDUCE_PERCENTILE_95",
+									"perSeriesAligner": "ALIGN_DELTA"
+									},
+									"filter": "metric.type=\"logging.googleapis.com/user/Container-Pull-latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"classic-1s-1r\""
+							}
+							}
+					},
+					"title": "Pull - 1r"
+					},
+					"width": 2,
+					"xPos": 6
+			},
+			{
+					"height": 4,
+					"widget": {
+					"scorecard": {
+							"sparkChartView": {
+							"sparkChartType": "SPARK_BAR"
+							},
+							"timeSeriesQuery": {
+							"timeSeriesFilter": {
+									"aggregation": {
+									"alignmentPeriod": "60s",
+									"crossSeriesReducer": "REDUCE_PERCENTILE_95",
+									"perSeriesAligner": "ALIGN_DELTA"
+									},
+									"filter": "metric.type=\"logging.googleapis.com/user/Container-Pull-latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"classic-1s-2r\""
+							}
+							}
+					},
+					"title": "Pull - 2r"
+					},
+					"width": 2,
+					"xPos": 8
+			},
+			{
+					"height": 4,
+					"widget": {
+					"scorecard": {
+							"sparkChartView": {
+							"sparkChartType": "SPARK_BAR"
+							},
+							"timeSeriesQuery": {
+							"timeSeriesFilter": {
+									"aggregation": {
+									"alignmentPeriod": "60s",
+									"crossSeriesReducer": "REDUCE_PERCENTILE_95",
+									"perSeriesAligner": "ALIGN_DELTA"
+									},
+									"filter": "metric.type=\"logging.googleapis.com/user/Container-Pull-latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"classic-1s-5r\""
+							}
+							}
+					},
+					"title": "Pull - 5r"
+					},
+					"width": 2,
+					"xPos": 10
+			},
+			{
+					"height": 4,
+					"widget": {
+					"scorecard": {
+							"sparkChartView": {
+							"sparkChartType": "SPARK_BAR"
+							},
+							"timeSeriesQuery": {
+							"timeSeriesFilter": {
+									"aggregation": {
+									"alignmentPeriod": "60s",
+									"crossSeriesReducer": "REDUCE_PERCENTILE_95",
+									"perSeriesAligner": "ALIGN_DELTA"
+									},
+									"filter": "metric.type=\"logging.googleapis.com/user/PubSub-Publish-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"classic-1s-1r\""
+							}
+							}
+					},
+					"title": "Publish - 1r"
+					},
+					"width": 2,
+					"xPos": 6,
+					"yPos": 4
+			},
+			{
+					"height": 4,
+					"widget": {
+					"scorecard": {
+							"sparkChartView": {
+							"sparkChartType": "SPARK_BAR"
+							},
+							"timeSeriesQuery": {
+							"timeSeriesFilter": {
+									"aggregation": {
+									"alignmentPeriod": "60s",
+									"crossSeriesReducer": "REDUCE_PERCENTILE_95",
+									"perSeriesAligner": "ALIGN_DELTA"
+									},
+									"filter": "metric.type=\"logging.googleapis.com/user/PubSub-Publish-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"classic-1s-2r\""
+							}
+							}
+					},
+					"title": "Publish - 2r"
+					},
+					"width": 2,
+					"xPos": 8,
+					"yPos": 4
+			},
+			{
+					"height": 4,
+					"widget": {
+					"scorecard": {
+							"sparkChartView": {
+							"sparkChartType": "SPARK_BAR"
+							},
+							"timeSeriesQuery": {
+							"timeSeriesFilter": {
+									"aggregation": {
+									"alignmentPeriod": "60s",
+									"crossSeriesReducer": "REDUCE_PERCENTILE_95",
+									"perSeriesAligner": "ALIGN_DELTA"
+									},
+									"filter": "metric.type=\"logging.googleapis.com/user/PubSub-Publish-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"classic-1s-5r\""
+							}
+							}
+					},
+					"title": "Publish - 5r"
+					},
+					"width": 2,
+					"xPos": 10,
+					"yPos": 4
+			},
+			{
+					"height": 4,
+					"widget": {
+					"title": "Puller Container Uptime",
+					"xyChart": {
+							"chartOptions": {
+							"mode": "COLOR"
+							},
+							"dataSets": [
+							{
+									"minAlignmentPeriod": "60s",
+									"plotType": "LINE",
+									"timeSeriesQuery": {
+									"timeSeriesFilter": {
+											"aggregation": {
+											"alignmentPeriod": "60s",
+											"perSeriesAligner": "ALIGN_MEAN"
+											},
+											"filter": "metric.type=\"kubernetes.io/container/uptime\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=starts_with(\"classic-1s-\")"
+									}
+									}
+							}
+							],
+							"timeshiftDuration": "0s",
+							"yAxis": {
+							"label": "y1Axis",
+							"scale": "LINEAR"
+							}
+					}
+					},
+					"width": 6,
+					"yPos": 12
+			},
+			{
+					"height": 4,
+					"widget": {
+					"title": "Publisher Container Uptime",
+					"xyChart": {
+							"chartOptions": {
+							"mode": "COLOR"
+							},
+							"dataSets": [
+							{
+									"minAlignmentPeriod": "60s",
+									"plotType": "LINE",
+									"timeSeriesQuery": {
+									"timeSeriesFilter": {
+											"aggregation": {
+											"alignmentPeriod": "60s",
+											"perSeriesAligner": "ALIGN_MEAN"
+											},
+											"filter": "metric.type=\"kubernetes.io/container/uptime\" resource.type=\"k8s_container\" metadata.user_labels.\"app\"=starts_with(\"publisher-1s-\")"
+									}
+									}
+							}
+							],
+							"timeshiftDuration": "0s",
+							"yAxis": {
+							"label": "y1Axis",
+							"scale": "LINEAR"
+							}
+					}
+					},
+					"width": 6,
+					"yPos": 8
+			}
+			]
+	},
+	"name": "projects/437768889353/dashboards/2a75ae7a-6bfe-4158-8251-6ba00e3fcf51"
+}
