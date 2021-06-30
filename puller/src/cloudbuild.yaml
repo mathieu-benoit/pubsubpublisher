@@ -4,7 +4,6 @@ steps:
       - build
       - '-t'
       - gcr.io/pubsub-test-pull/pubsub-puller:$SHORT_SHA
-      - '--build-arg=JAR_FILE=target/puller-1.0-SNAPSHOT.jar'
       - .
     id: Dockerize
     dir: 'puller/src'
