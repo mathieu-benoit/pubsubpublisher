@@ -4,6 +4,6 @@ COPY pom.xml /usr/src/app
 WORKDIR /usr/src/app
 RUN mvn package -Dmaven.test.skip=true
 
-FROM openjdk:16-jdk-oracle
+FROM openjdk:16.0.1-slim
 COPY --from=build /usr/src/app/target/puller-1.0.jar puller.jar
 ENTRYPOINT ["java", "-Djava.security.edg=file:/dev/./urandom","-jar","/puller.jar"]
