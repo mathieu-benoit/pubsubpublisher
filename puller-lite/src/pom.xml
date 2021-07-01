@@ -7,14 +7,14 @@
 
 	<groupId>lite-pubsub-puller</groupId>
 	<artifactId>lite-pubsub-puller</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 
 	<name>lite-pubsub-puller</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.source>16</maven.compiler.source>
+		<maven.compiler.target>16</maven.compiler.target>
 	</properties>
 
 	<dependencyManagement>
@@ -22,7 +22,7 @@
 			<dependency>
 				<groupId>com.google.cloud</groupId>
 				<artifactId>libraries-bom</artifactId>
-				<version>20.6.0</version>
+				<version>20.7.0</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>

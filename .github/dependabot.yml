@@ -29,3 +29,11 @@ updates:
     directory: "/puller/src/"
     schedule:
       interval: "daily"
+  - package-ecosystem: "docker"
+    directory: "/puller-lite/src/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "maven"
+    directory: "/puller-lite/src/"
+    schedule:
+      interval: "daily"

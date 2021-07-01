@@ -1,0 +1,11 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - '-t'
+      - gcr.io/pubsub-test-pull/lite-pubsub-puller:$SHORT_SHA
+      - .
+    id: Dockerize
+    dir: 'puller-lite/src'
+images:
+  - gcr.io/pubsub-test-pull/lite-pubsub-puller:$SHORT_SHA
