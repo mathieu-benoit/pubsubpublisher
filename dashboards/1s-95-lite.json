@@ -1,6 +1,6 @@
 {
-  "displayName": "99th percentile / 1s",
-  "etag": "5c2f791b03b744a596b0b27e51eb194a",
+  "displayName": "95th percentile / 1s (Lite)",
+  "etag": "9bd3ebc130059048741b2848c54938c9",
   "mosaicLayout": {
     "columns": 12,
     "tiles": [
@@ -20,13 +20,16 @@
                   "timeSeriesFilter": {
                     "aggregation": {
                       "alignmentPeriod": "60s",
-                      "crossSeriesReducer": "REDUCE_PERCENTILE_99",
+                      "crossSeriesReducer": "REDUCE_PERCENTILE_95",
                       "groupByFields": [
                         "metadata.user_labels.\"scenario\""
                       ],
                       "perSeriesAligner": "ALIGN_DELTA"
                     },
-                    "filter": "metric.type=\"logging.googleapis.com/user/Container-Pull-latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=starts_with(\"classic-1s-\")"
+                    "filter": "metric.type=\"logging.googleapis.com/user/Container-Pull-Lite-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=starts_with(\"lite-1s-\")",
+                    "secondaryAggregation": {
+                      "alignmentPeriod": "60s"
+                    }
                   }
                 }
               }
@@ -56,13 +59,16 @@
                   "timeSeriesFilter": {
                     "aggregation": {
                       "alignmentPeriod": "60s",
-                      "crossSeriesReducer": "REDUCE_PERCENTILE_99",
+                      "crossSeriesReducer": "REDUCE_PERCENTILE_95",
                       "groupByFields": [
                         "resource.label.\"namespace_name\""
                       ],
                       "perSeriesAligner": "ALIGN_DELTA"
                     },
-                    "filter": "metric.type=\"logging.googleapis.com/user/PubSub-Publish-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=starts_with(\"classic-1s-\")"
+                    "filter": "metric.type=\"logging.googleapis.com/user/PubSub-Lite-Publish-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=starts_with(\"lite-1s-\")",
+                    "secondaryAggregation": {
+                      "alignmentPeriod": "60s"
+                    }
                   }
                 }
               }
@@ -88,10 +94,10 @@
               "timeSeriesFilter": {
                 "aggregation": {
                   "alignmentPeriod": "60s",
-                  "crossSeriesReducer": "REDUCE_PERCENTILE_99",
+                  "crossSeriesReducer": "REDUCE_PERCENTILE_95",
                   "perSeriesAligner": "ALIGN_DELTA"
                 },
-                "filter": "metric.type=\"logging.googleapis.com/user/Container-Pull-latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"classic-1s-1r\""
+                "filter": "metric.type=\"logging.googleapis.com/user/Container-Pull-Lite-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"lite-1s-1r\""
               }
             }
           },
@@ -111,10 +117,10 @@
               "timeSeriesFilter": {
                 "aggregation": {
                   "alignmentPeriod": "60s",
-                  "crossSeriesReducer": "REDUCE_PERCENTILE_99",
+                  "crossSeriesReducer": "REDUCE_PERCENTILE_95",
                   "perSeriesAligner": "ALIGN_DELTA"
                 },
-                "filter": "metric.type=\"logging.googleapis.com/user/Container-Pull-latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"classic-1s-2r\""
+                "filter": "metric.type=\"logging.googleapis.com/user/Container-Pull-Lite-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"lite-1s-2r\""
               }
             }
           },
@@ -134,10 +140,10 @@
               "timeSeriesFilter": {
                 "aggregation": {
                   "alignmentPeriod": "60s",
-                  "crossSeriesReducer": "REDUCE_PERCENTILE_99",
+                  "crossSeriesReducer": "REDUCE_PERCENTILE_95",
                   "perSeriesAligner": "ALIGN_DELTA"
                 },
-                "filter": "metric.type=\"logging.googleapis.com/user/Container-Pull-latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"classic-1m-5r\""
+                "filter": "metric.type=\"logging.googleapis.com/user/Container-Pull-Lite-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"lite-1s-5r\""
               }
             }
           },
@@ -157,10 +163,10 @@
               "timeSeriesFilter": {
                 "aggregation": {
                   "alignmentPeriod": "60s",
-                  "crossSeriesReducer": "REDUCE_PERCENTILE_99",
+                  "crossSeriesReducer": "REDUCE_PERCENTILE_95",
                   "perSeriesAligner": "ALIGN_DELTA"
                 },
-                "filter": "metric.type=\"logging.googleapis.com/user/PubSub-Publish-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"classic-1s-1r\""
+                "filter": "metric.type=\"logging.googleapis.com/user/PubSub-Lite-Publish-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"lite-1s-1r\""
               }
             }
           },
@@ -181,10 +187,10 @@
               "timeSeriesFilter": {
                 "aggregation": {
                   "alignmentPeriod": "60s",
-                  "crossSeriesReducer": "REDUCE_PERCENTILE_99",
+                  "crossSeriesReducer": "REDUCE_PERCENTILE_95",
                   "perSeriesAligner": "ALIGN_DELTA"
                 },
-                "filter": "metric.type=\"logging.googleapis.com/user/PubSub-Publish-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"classic-1s-2r\""
+                "filter": "metric.type=\"logging.googleapis.com/user/PubSub-Lite-Publish-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"lite-1s-2r\""
               }
             }
           },
@@ -205,10 +211,10 @@
               "timeSeriesFilter": {
                 "aggregation": {
                   "alignmentPeriod": "60s",
-                  "crossSeriesReducer": "REDUCE_PERCENTILE_99",
+                  "crossSeriesReducer": "REDUCE_PERCENTILE_95",
                   "perSeriesAligner": "ALIGN_DELTA"
                 },
-                "filter": "metric.type=\"logging.googleapis.com/user/PubSub-Publish-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"classic-1m-5r\""
+                "filter": "metric.type=\"logging.googleapis.com/user/PubSub-Lite-Publish-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=\"lite-1s-5r\""
               }
             }
           },
@@ -236,7 +242,10 @@
                       "alignmentPeriod": "60s",
                       "perSeriesAligner": "ALIGN_MEAN"
                     },
-                    "filter": "metric.type=\"kubernetes.io/container/uptime\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=starts_with(\"classic-1s-\")"
+                    "filter": "metric.type=\"kubernetes.io/container/uptime\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=starts_with(\"lite-1s-\") resource.label.\"namespace_name\"=\"lite-puller\"",
+                    "secondaryAggregation": {
+                      "alignmentPeriod": "60s"
+                    }
                   }
                 }
               }
@@ -269,7 +278,10 @@
                       "alignmentPeriod": "60s",
                       "perSeriesAligner": "ALIGN_MEAN"
                     },
-                    "filter": "metric.type=\"kubernetes.io/container/uptime\" resource.type=\"k8s_container\" metadata.user_labels.\"app\"=starts_with(\"publisher-1s-\")"
+                    "filter": "metric.type=\"kubernetes.io/container/uptime\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=starts_with(\"lite-1s-\") resource.label.\"namespace_name\"=\"lite-publisher\"",
+                    "secondaryAggregation": {
+                      "alignmentPeriod": "60s"
+                    }
                   }
                 }
               }
@@ -306,7 +318,10 @@
                       ],
                       "perSeriesAligner": "ALIGN_DELTA"
                     },
-                    "filter": "metric.type=\"logging.googleapis.com/user/Container-Pull-latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=starts_with(\"classic-1s-\")"
+                    "filter": "metric.type=\"logging.googleapis.com/user/Container-Pull-Lite-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=starts_with(\"lite-1s-\")",
+                    "secondaryAggregation": {
+                      "alignmentPeriod": "60s"
+                    }
                   }
                 }
               }
@@ -324,7 +339,7 @@
       {
         "height": 4,
         "widget": {
-          "title": "Publish Standard deviation",
+          "title": "Publish Standard Deviation",
           "xyChart": {
             "chartOptions": {
               "mode": "COLOR"
@@ -340,7 +355,7 @@
                       "crossSeriesReducer": "REDUCE_STDDEV",
                       "perSeriesAligner": "ALIGN_DELTA"
                     },
-                    "filter": "metric.type=\"logging.googleapis.com/user/PubSub-Publish-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=starts_with(\"classic-1s-\")",
+                    "filter": "metric.type=\"logging.googleapis.com/user/PubSub-Lite-Publish-Latency\" resource.type=\"k8s_container\" metadata.user_labels.\"scenario\"=starts_with(\"lite-1s-\")",
                     "secondaryAggregation": {
                       "alignmentPeriod": "60s"
                     }
@@ -360,5 +375,5 @@
       }
     ]
   },
-  "name": "projects/437768889353/dashboards/368ae2a0-d88a-43e4-bab8-fd9a6a0efba0"
+  "name": "projects/437768889353/dashboards/adf0f1d1-8cca-4da7-a7f1-0d494b98b6ae"
 }
