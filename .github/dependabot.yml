@@ -37,3 +37,11 @@ updates:
     directory: "/puller-lite/src/"
     schedule:
       interval: "daily"
+  - package-ecosystem: "docker"
+    directory: "/publisher-lite/src/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "maven"
+    directory: "/publisher-lite/src/"
+    schedule:
+      interval: "daily"
