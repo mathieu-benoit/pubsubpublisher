@@ -11,7 +11,7 @@ WORKDIR /app
 RUN dotnet publish pushee.csproj -r linux-musl-x64 --self-contained true -p:PublishTrimmed=True -p:TrimMode=Link -c release -o out --no-restore
 
 # https://mcr.microsoft.com/v2/dotnet/runtime-deps/tags/list
-FROM mcr.microsoft.com/dotnet/runtime-deps:5.0.8-alpine3.13-amd64
+FROM mcr.microsoft.com/dotnet/runtime-deps:5.0.9-alpine3.13-amd64
 WORKDIR /app
 COPY --from=publish /app/out ./
 EXPOSE 7070
