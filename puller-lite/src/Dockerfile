@@ -1,4 +1,4 @@
-FROM maven:3.8.1-openjdk-16-slim AS build
+FROM maven:3.8.2-openjdk-16-slim AS build
 COPY src /usr/src/app/src
 COPY pom.xml /usr/src/app
 WORKDIR /usr/src/app
