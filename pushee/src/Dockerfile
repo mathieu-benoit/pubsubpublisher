@@ -1,5 +1,5 @@
 # https://mcr.microsoft.com/v2/dotnet/sdk/tags/list
-FROM mcr.microsoft.com/dotnet/sdk:5.0.400 AS build
+FROM mcr.microsoft.com/dotnet/sdk:5.0.401 AS build
 WORKDIR /app
 COPY pushee.csproj ./
 WORKDIR /app
